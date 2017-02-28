@@ -14,6 +14,19 @@ public class VolatileExample {
         t2.start();
     }
 
+    class VolatileDataAsInnerClass {
+
+        private int counter = 0;
+
+        public int getCounter() {
+            return counter;
+        }
+
+        public void addCounter() {
+            ++counter;
+        }
+    }
+
 }
 
 class VolatileData {
