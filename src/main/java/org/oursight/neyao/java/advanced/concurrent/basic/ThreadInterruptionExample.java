@@ -1,4 +1,4 @@
-package org.oursight.neyao.java.advanced.concurrent;
+package org.oursight.neyao.java.advanced.concurrent.basic;
 
 import java.util.concurrent.TimeUnit;
 

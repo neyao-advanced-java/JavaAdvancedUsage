@@ -1,4 +1,4 @@
-package org.oursight.neyao.java.advanced.concurrent;
+package org.oursight.neyao.java.advanced.concurrent.basic;
 
 /**
  * Created by DellPC on 2017/3/7.

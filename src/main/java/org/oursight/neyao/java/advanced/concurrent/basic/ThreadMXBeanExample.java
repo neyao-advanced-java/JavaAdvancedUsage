@@ -1,4 +1,4 @@
-package org.oursight.neyao.java.advanced.concurrent;
+package org.oursight.neyao.java.advanced.concurrent.basic;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
