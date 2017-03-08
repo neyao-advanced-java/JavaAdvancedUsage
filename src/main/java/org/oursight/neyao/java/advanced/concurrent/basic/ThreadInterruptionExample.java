@@ -19,17 +19,31 @@ public class ThreadInterruptionExample {
 
         TimeUnit.SECONDS.sleep(5);
 
+        System.out.println("------ before -------");
+
+        System.out.println("sleepThread.isInterrupted() 1 = " + sleepThread.isInterrupted());
+        System.out.println("busyThread.isInterrupted() 1 = " + busyThread.isInterrupted());
+        System.out.println();
+        System.out.println();
+
+
         sleepThread.interrupt();
         busyThread.interrupt();
+
+        System.out.println("------ after -------");
 
         System.out.println("sleepThread.isAlive() = " + sleepThread.isAlive());
         System.out.println("busyThread.isAlive() = " + busyThread.isAlive());
         System.out.println();
-        System.out.println("sleepThread.isInterrupted() = " + sleepThread.isInterrupted());
-        System.out.println("busyThread.isInterrupted() = " + busyThread.isInterrupted());
+        System.out.println("sleepThread.isInterrupted() 2 = " + sleepThread.isInterrupted());
+        System.out.println("busyThread.isInterrupted() 2 = " + busyThread.isInterrupted());
         System.out.println();
         System.out.println("sleepThread.isAlive() = " + sleepThread.isAlive());
         System.out.println("busyThread.isAlive() = " + busyThread.isAlive());
+        System.out.println();
+        System.out.println("sleepThread.isInterrupted() 3 = " + sleepThread.isInterrupted());
+        System.out.println("busyThread.isInterrupted() 3 = " + busyThread.isInterrupted());
+        System.out.println();
 
     }
 
@@ -39,7 +53,7 @@ public class ThreadInterruptionExample {
         public void run() {
             while (true) {
                 try {
-                    TimeUnit.SECONDS.sleep(20);
+                    Thread.sleep(10000L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
