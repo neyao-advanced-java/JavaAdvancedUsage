@@ -14,45 +14,35 @@ public class WaitInThread {
         Thread t1 = new Thread(new ThreadInThisClass());
 
         System.out.println(Thread.currentThread().getName() + " start thread");
-        t1.start();
-
-        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
-//        ThreadInfo[] dump = bean.getT.dumpAllThreads(true, true);
-//        ThreadInfo threadInfoOfT1 = getThreadInfo(t1.getId(), dump);
-        ThreadInfo threadInfoOfT1 = bean.getThreadInfo(t1.getId());
-
-        System.out.println("threadInfoOfT1: " + threadInfoOfT1);
-
-        System.out.println("threadInfoOfT1: " + threadInfoOfT1.getLockInfo());
-        System.out.println("threadInfoOfT1: " + Arrays.toString(threadInfoOfT1.getLockedMonitors()));
+        System.out.println(Thread.currentThread().getName() + " 1 holdsLock of t1: " + Thread.currentThread().holdsLock(t1) + "; " +"t1.getState() 2: " + t1.getState());
         System.out.println("t1.getState() 1: " + t1.getState());
+
         synchronized (t1) {
-//            System.out.println("t1.getState() 2: " + t1.getState());
+            System.out.println();
+            System.out.println();
+            t1.start();
+
+            System.out.println(Thread.currentThread().getName() + " 2 holdsLock of t1: " + Thread.currentThread().holdsLock(t1) + "; " +"t1.getState() 2: " + t1.getState());
             t1.wait();
-//            System.out.println("t1.getState() 3: " + t1.getState());
+            System.out.println(Thread.currentThread().getName() + " 3 holdsLock of t1: " + Thread.currentThread().holdsLock(t1) + "; " +"t1.getState() 2: " + t1.getState());
+            System.out.println();
+            System.out.println();
         }
+        System.out.println(Thread.currentThread().getName() + " 4 holdsLock of t1: " + Thread.currentThread().holdsLock(t1) + "; " +"t1.getState() 2: " + t1.getState());
         System.out.println("t1.getState() 4: " + t1.getState());
 
 
         System.out.println(Thread.currentThread().getName() + " start thread done");
     }
 
-    static ThreadInfo getThreadInfo(long threadId, ThreadInfo[] dump) {
-        for (ThreadInfo threadInfo : dump) {
-            if(threadInfo.getThreadId() == threadId) {
-                return threadInfo;
-            }
-        }
 
-        return null;
-    }
 
     static class ThreadInThisClass implements Runnable {
 
         @Override
         public void run() {
             System.out.println(Thread.currentThread().getId() + " " + Thread.currentThread().getName() + " start...");
-            System.out.println(Thread.currentThread().getId() + " " + Thread.currentThread().getName() + " begin waiting");
+            System.out.println(Thread.currentThread().getId() + " " + Thread.currentThread().getName() + "  will begin waiting");
 //            try {
 //                synchronized (this) {
 //                    wait();
@@ -61,7 +51,7 @@ public class WaitInThread {
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-            System.out.println(Thread.currentThread().getName() + " is done");
+            System.out.println(Thread.currentThread().getName() + " will be done");
 
         }
     }
