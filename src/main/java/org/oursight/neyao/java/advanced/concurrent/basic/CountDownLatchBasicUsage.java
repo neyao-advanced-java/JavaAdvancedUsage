@@ -3,6 +3,7 @@ package org.oursight.neyao.java.advanced.concurrent.basic;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * see: http://www.importnew.com/21889.html
  * Created by neyao on 2017/3/14.
  */
 public class CountDownLatchBasicUsage {
