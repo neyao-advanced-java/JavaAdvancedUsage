@@ -12,6 +12,9 @@ public class CountDownLatchBasicUsage {
 
         final CountDownLatch latch = new CountDownLatch(2);
 
+        System.out.println("主线程开始执行...");
+
+
         new Thread(){
             public void run() {
                 try {
@@ -46,5 +49,8 @@ public class CountDownLatchBasicUsage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("主线程执行完成...");
+
     }
 }
