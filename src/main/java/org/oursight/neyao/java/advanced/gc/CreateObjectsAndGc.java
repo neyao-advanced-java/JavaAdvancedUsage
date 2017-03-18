@@ -9,6 +9,9 @@ import java.util.List;
 public class CreateObjectsAndGc {
 
     public static void main(String[] args) {
+
+        ShowGarbageCollectors.print();
+
         int i = 0;
         boolean flag = true;
         while (flag) {
