@@ -1,10 +1,6 @@
 package org.oursight.neyao.java.advanced.concurrent.collection;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by neyao on 2017/3/15.
