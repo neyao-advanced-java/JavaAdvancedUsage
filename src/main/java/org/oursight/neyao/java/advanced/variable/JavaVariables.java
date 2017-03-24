@@ -8,5 +8,8 @@ public class JavaVariables {
     public static void main(String[] args) {
         byte b = 100;
         System.out.println(b);
+
+        Byte bb = new Byte("1");
+        System.out.println("bb = " + bb.byteValue());
     }
 }
