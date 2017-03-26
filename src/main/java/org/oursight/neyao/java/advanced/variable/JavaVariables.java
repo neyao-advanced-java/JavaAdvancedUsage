@@ -11,5 +11,12 @@ public class JavaVariables {
 
         Byte bb = new Byte("1");
         System.out.println("bb = " + bb.byteValue());
+
+        char c = '中';
+//        System.out.println(c.getBytes().l);
+
+        String s = "中";
+        System.out.println(s.getBytes().length);
+        System.out.println(s.toCharArray().length);
     }
 }
