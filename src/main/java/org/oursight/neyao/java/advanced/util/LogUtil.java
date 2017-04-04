@@ -7,13 +7,14 @@ public class LogUtil {
 
     public static long log(String message) {
         System.out.println(DateUtil.getCurrentDateTime() + "  " + message);
-        return System.currentTimeMillis();
+        return System.nanoTime();
     }
 
 
     public static long log(String message, long startTime) {
-        long timeCost = System.currentTimeMillis() - startTime;
-        System.out.println(DateUtil.getCurrentDateTime() + "  " + message + ". Time cost: " + timeCost +" ms");
-        return timeCost;
+        long current = System.nanoTime();
+        long timeCost = current - startTime;
+        System.out.println(DateUtil.getCurrentDateTime() + "  " + message + ". Time cost: " + timeCost + " ns (" + timeCost / 1000000 + "ms)");
+        return current;
     }
 }

@@ -12,18 +12,46 @@ public class SortingAlgorithms {
 
     public static void main(String[] args) {
 
+        int arrayLength = 5;
+        int counter = 0;
+        int[] tempArray;
+        boolean print = true;
+
         long t1 = LogUtil.log("Start creating array");
-        int[] array = createArray(10000);
-        LogUtil.log("Creating array done", t1);
-       // System.out.println(Arrays.toString(array));
+        int[] array = _createArray(arrayLength);
+        long t2 = LogUtil.log("Creating array done", t1);
+        System.out.println(Arrays.toString(array));
+
+        System.out.println();
+        System.out.println("-----");
+        System.out.println();
+
+        counter = 0;
+        tempArray = Arrays.copyOf(array, arrayLength);
+        counter = selectionSorting(tempArray, print);
+        System.out.println();
+        System.out.println(Arrays.toString(tempArray));
+        LogUtil.log("sorting done, execute times: " + counter + ", arrayLength: " + arrayLength, t2);
+
+        System.out.println();
+        System.out.println("-----");
+        System.out.println();
+
+        counter = 0;
+        tempArray = Arrays.copyOf(array, arrayLength);
+        counter = bubbleSorting(tempArray, print);
+        System.out.println();
+        System.out.println(Arrays.toString(tempArray));
+        LogUtil.log("sorting done, execute times: " + counter + ", arrayLength: " + arrayLength, t2);
+
 
     }
 
-    public static int[] createArray(int length) {
-        return createArray(length, 1000);
+    public static int[] _createArray(int length) {
+        return _createArray(length, 1000);
     }
 
-    public static int[] createArray(int length, int max) {
+    public static int[] _createArray(int length, int max) {
 
         int[] array = new int[length];
         for (int i = 0; i < length; i++) {
@@ -33,11 +61,68 @@ public class SortingAlgorithms {
         return array;
     }
 
-    public static void bubbleSorting(int[] array) {
+    /**
+     * 选择排序
+     */
+    public static int selectionSorting(int[] array, boolean print) {
+        System.out.println("selectionSorting start");
 
+        int _counter = 0;
         for (int i = 0; i < array.length; i++) {
-            int a = array[i];
+
+            for (int j = i + 1; j < array.length; j++) {
+                _counter++;
+                if (array[j] < array[i]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    if (print) {
+                        System.out.println(Arrays.toString(array));
+                    }
+                }
+            }
+
         }
+
+        System.out.println("selectionSorting done");
+        return _counter;
     }
 
+    public static int bubbleSorting(int[] array, boolean print) {
+        System.out.println("bubbleSorting start");
+
+        int _counter = 0;
+        for (int i = 0; i < array.length; i++) {
+
+            for (int j = i + 1; j < array.length - i - 1; j++) {
+                _counter++;
+                if (array[i] > array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    if(print) {
+                        System.out.println(Arrays.toString(array));
+                    }
+                }
+            }
+        }
+
+        System.out.println("bubbleSorting done");
+        return _counter;
+    }
+
+    public static int insertionSorting(int[] array, boolean print) {
+        System.out.println("insertionSorting start");
+
+        int _counter = 0;
+        for (int i = 0; i < array.length; i++) {
+
+            for (int j = 1; j < array.length; j++) {
+
+            }
+        }
+
+        System.out.println("insertionSorting done");
+        return _counter;
+    }
 }
