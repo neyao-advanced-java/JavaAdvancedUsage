@@ -30,26 +30,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         }
 
-//        System.out.println(tree.findInRange(arrays[0], arrays[1]));
-        TreePrinter.print(tree.root);
-        System.out.println(tree.findMax());
-        System.out.println(Arrays.toString(arrays));
-
-        System.out.println("======= preorder start ========");
-        preorder(tree.root);
-        System.out.println();
-
-        System.out.println("======= inorder start ========");
-        inorder(tree.root);
-        System.out.println();
-
-        System.out.println("======= postorder start ========");
-        postorder(tree.root);
-        System.out.println();
+//
 
     }
 
-    private Node root = null;
+    Node root = null;
 
     public boolean contains(T t) {
         return containsRecursively(t, root);
@@ -181,38 +166,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
-    /**
-     *  http://www.gocalf.com/blog/traversing-binary-tree.html
-     *  http://robinsoncrusoe.iteye.com/blog/808526
-     *
-     * 递归实现前序遍历
-     * @param node
-     */
-    public static void preorder(Node node) {
-        if (node != null) {
-            System.out.println(node.getText());
-            preorder((Node) node.getLeft());
-            preorder((Node) node.getRight());
-        }
-    }
 
-    /** 递归实现中序遍历 */
-    protected static void inorder(Node p) {
-        if (p != null) {
-            inorder((Node) p.getLeft());
-            System.out.println(p.getText());
-            inorder((Node) p.getRight());
-        }
-    }
-
-    /** 递归实现后序遍历 */
-    protected static void postorder(Node p) {
-        if (p != null) {
-            inorder((Node) p.getLeft());
-            inorder((Node) p.getRight());
-            System.out.println(p.getText());
-        }
-    }
 
 
 }
