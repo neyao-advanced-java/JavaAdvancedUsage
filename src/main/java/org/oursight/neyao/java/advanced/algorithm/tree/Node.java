@@ -5,12 +5,12 @@ package org.oursight.neyao.java.advanced.algorithm.tree;
  */
 public class Node<T> implements INode {
 
-    private T data;
-    private Node left;
-    private Node right;
-    private int depth;
+    protected T data;
+    protected Node left;
+    protected Node right;
+    protected int depth;
 
-    Node(T data) {
+    public Node(T data) {
         this.data = data;
         this.left = null;
         this.right = null;

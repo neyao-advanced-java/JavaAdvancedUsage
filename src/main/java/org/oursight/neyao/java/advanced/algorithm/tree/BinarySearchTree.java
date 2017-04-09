@@ -16,13 +16,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
-        Integer[] arrays = SortingAlgorithms._createArray(11);
+        Integer[] arrays = SortingAlgorithms._createArray(7);
 
 
         for (Integer a : arrays) {
             System.out.println(a + " add");
             tree.add(a);
-            TreePrinter.print(tree.root);
+//            TreePrinter.print(tree.root);
 //            Thread.sleep(1000);
 
             System.out.println();
@@ -31,8 +31,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
 
 //        System.out.println(tree.findInRange(arrays[0], arrays[1]));
+        TreePrinter.print(tree.root);
         System.out.println(tree.findMax());
         System.out.println(Arrays.toString(arrays));
+
+        System.out.println("======= preorder start ========");
+        preorder(tree.root);
+        System.out.println("===================");
+        System.out.println();
+        System.out.println();
+
+        System.out.println("======= inorder start ========");
+        inorder(tree.root);
+        System.out.println("===================");
+        System.out.println();
+        System.out.println();
+
     }
 
     private Node root = null;
@@ -165,6 +179,30 @@ public class BinarySearchTree<T extends Comparable<T>> {
             ;//doNothing
 
         return node;
+    }
+
+    /**
+     *  http://www.gocalf.com/blog/traversing-binary-tree.html
+     *  http://robinsoncrusoe.iteye.com/blog/808526
+     *
+     * 递归实现前序遍历
+     * @param node
+     */
+    public static void preorder(Node node) {
+        if (node != null) {
+            System.out.println(node.getText());
+            preorder((Node) node.getLeft());
+            preorder((Node) node.getRight());
+        }
+    }
+
+    /** 递归实现中序遍历 */
+    protected static void inorder(Node p) {
+        if (p != null) {
+            inorder((Node) p.getLeft());
+            System.out.println(p.getText());
+            inorder((Node) p.getRight());
+        }
     }
 
 
