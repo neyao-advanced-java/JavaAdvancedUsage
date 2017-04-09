@@ -14,11 +14,11 @@ public class SortingAlgorithms {
 
         int arrayLength = 5;
         int counter = 0;
-        int[] tempArray;
+        Integer[] tempArray;
         boolean print = true;
 
         long t1 = LogUtil.log("Start creating array");
-        int[] array = _createArray(arrayLength);
+        Integer[] array = _createArray(arrayLength);
         long t2 = LogUtil.log("Creating array done", t1);
         System.out.println(Arrays.toString(array));
 
@@ -47,13 +47,13 @@ public class SortingAlgorithms {
 
     }
 
-    public static int[] _createArray(int length) {
+    public static Integer[] _createArray(int length) {
         return _createArray(length, 1000);
     }
 
-    public static int[] _createArray(int length, int max) {
+    public static Integer[] _createArray(int length, int max) {
 
-        int[] array = new int[length];
+        Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
             array[i] = new Random().nextInt(max);
         }
@@ -64,7 +64,7 @@ public class SortingAlgorithms {
     /**
      * 选择排序
      */
-    public static int selectionSorting(int[] array, boolean print) {
+    public static int selectionSorting(Integer[] array, boolean print) {
         System.out.println("selectionSorting start");
 
         int _counter = 0;
@@ -88,7 +88,7 @@ public class SortingAlgorithms {
         return _counter;
     }
 
-    public static int bubbleSorting(int[] array, boolean print) {
+    public static int bubbleSorting(Integer[] array, boolean print) {
         System.out.println("bubbleSorting start");
 
         int _counter = 0;
@@ -111,7 +111,7 @@ public class SortingAlgorithms {
         return _counter;
     }
 
-    public static int insertionSorting(int[] array, boolean print) {
+    public static int insertionSorting(Integer[] array, boolean print) {
         System.out.println("insertionSorting start");
 
         int _counter = 0;
