@@ -16,7 +16,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
-        Integer[] arrays = SortingAlgorithms._createArray(7);
+        Integer[] arrays = SortingAlgorithms._createArray(5);
 
 
         for (Integer a : arrays) {
@@ -37,14 +37,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         System.out.println("======= preorder start ========");
         preorder(tree.root);
-        System.out.println("===================");
-        System.out.println();
         System.out.println();
 
         System.out.println("======= inorder start ========");
         inorder(tree.root);
-        System.out.println("===================");
         System.out.println();
+
+        System.out.println("======= postorder start ========");
+        postorder(tree.root);
         System.out.println();
 
     }
@@ -202,6 +202,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
             inorder((Node) p.getLeft());
             System.out.println(p.getText());
             inorder((Node) p.getRight());
+        }
+    }
+
+    /** 递归实现后序遍历 */
+    protected static void postorder(Node p) {
+        if (p != null) {
+            inorder((Node) p.getLeft());
+            inorder((Node) p.getRight());
+            System.out.println(p.getText());
         }
     }
 
