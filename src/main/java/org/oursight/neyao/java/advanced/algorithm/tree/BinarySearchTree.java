@@ -46,11 +46,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return false;
         }
 
-        int compareResult = t.compareTo((T) node.data);
+        int compareResult = t.compareTo((T) node.getData());
         if (compareResult < 0) {
-            return containsRecursively(t, node.left);
+            return containsRecursively(t, (Node) node.getLeft());
         } else if (compareResult > 0) {
-            return containsRecursively(t, node.right);
+            return containsRecursively(t, (Node) node.getRight());
         } else {
             return true;
         }
@@ -66,7 +66,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) {
             return null;
         } else
-            return (T) node.data;
+            return (T) node.getData();
     }
 
     private Node findMaxRecursively(Node node) {
@@ -74,10 +74,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return null;
         }
 
-        if (node.right == null) {
+        if (node.getRight() == null) {
             return node;
         } else {
-            return findMaxRecursively(node.right);
+            return findMaxRecursively((Node) node.getRight());
         }
     }
 
@@ -108,16 +108,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return;
         }
 
-        T nodeData = (T) node.data;
+        T nodeData = (T) node.getData();
         if (nodeData.compareTo(min) >= 0 && nodeData.compareTo(max) <= 0) {
-            result.add((T) node.data);
+            result.add((T) node.getData());
 
             if (nodeData.compareTo(min) >= 0) {
-                findInRangeRecursively(min, max, node.left, result);
+                findInRangeRecursively(min, max, (Node) node.getLeft(), result);
             }
 
             if (nodeData.compareTo(max) <= 0) {
-                findInRangeRecursively(min, max, node.right, result);
+                findInRangeRecursively(min, max, (Node) node.getRight(), result);
             }
 
         } else {
@@ -131,7 +131,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) {
             return null;
         } else {
-            return (T) node.data;
+            return (T) node.getData();
         }
     }
 
@@ -140,10 +140,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return null;
         }
 
-        if (node.left == null) {
+        if (node.getLeft() == null) {
             return node;
         } else {
-            return findMinRecursively(node.left);
+            return findMinRecursively((Node) node.getLeft());
         }
     }
 
@@ -156,51 +156,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return new Node(t);
         }
 
-        int result = t.compareTo((T) node.data);
+        int result = t.compareTo((T) node.getData());
         if (result < 0)
-            node.left = addInternal(t, node.left);
+            node.setLeft(addInternal(t, (Node) node.getLeft()));
         else if (result > 0)
-            node.right = addInternal(t, node.right);
+            node.setRight(addInternal(t, (Node) node.getRight()));
         else
             ;//doNothing
 
         return node;
-    }
-
-
-    private static class Node<T> implements TreePrinter.PrintableNode {
-
-        T data;
-        Node left;
-        Node right;
-
-        Node(T data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-
-        Node(T data, Node left, Node right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
-
-
-        @Override
-        public TreePrinter.PrintableNode getLeft() {
-            return left;
-        }
-
-        @Override
-        public TreePrinter.PrintableNode getRight() {
-            return right;
-        }
-
-        @Override
-        public String getText() {
-            return data == null ? "" : data.toString();
-        }
     }
 
 
