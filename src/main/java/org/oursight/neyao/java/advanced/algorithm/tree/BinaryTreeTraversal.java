@@ -3,6 +3,8 @@ package org.oursight.neyao.java.advanced.algorithm.tree;
 import org.oursight.neyao.java.advanced.algorithm.sort.SortingAlgorithms;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -13,7 +15,7 @@ public class BinaryTreeTraversal {
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
-        Integer[] arrays = SortingAlgorithms._createArray(5);
+        Integer[] arrays = SortingAlgorithms._createArray(10);
 
 
         for (Integer a : arrays) {
@@ -29,13 +31,13 @@ public class BinaryTreeTraversal {
         System.out.println(Arrays.toString(arrays));
         System.out.println();
 
-        System.out.println("======= preorder start ========");
-        preorder(tree.root);
-        System.out.println();
-
-        System.out.println("======= preorder_stack_1 start ========");
-        preorder_stack_1(tree.root);
-        System.out.println();
+//        System.out.println("======= preorder start ========");
+//        preorder(tree.root);
+//        System.out.println();
+//
+//        System.out.println("======= preorder_stack_1 start ========");
+//        preorder_stack_1(tree.root);
+//        System.out.println();
 
 //        System.out.println("======= inorder start ========");
 //        inorder(tree.root);
@@ -44,6 +46,10 @@ public class BinaryTreeTraversal {
 //        System.out.println("======= postorder start ========");
 //        postorder(tree.root);
 //        System.out.println();
+
+        System.out.println("======= level traveral start ========");
+        levelTravel(tree.root);
+        System.out.println();
     }
 
     /**
@@ -85,30 +91,46 @@ public class BinaryTreeTraversal {
     }
 
     /**
-     *
      * @param node 树节点
-     * 利用栈实现循环先序遍历二叉树
-     * 这种实现类似于图的深度优先遍历（DFS）
-     * 维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
-     * 这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），但是不具备很好的扩展性，在中序和后序方式中不适用
+     *             利用栈实现循环先序遍历二叉树
+     *             这种实现类似于图的深度优先遍历（DFS）
+     *             维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
+     *             这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），但是不具备很好的扩展性，在中序和后序方式中不适用
      */
     public static void preorder_stack_1(Node node) {
         Stack<Node> stack = new Stack<>();
         if (node != null) {
             stack.push(node);
             while (!stack.empty()) {
-                 Node temp = stack.pop();
+                Node temp = stack.pop();
                 System.out.println(temp.getText());
 
                 // 后进先出，先放右边的
-                if(temp.getRight() != null) {
+                if (temp.getRight() != null) {
                     stack.push(temp.right);
                 }
-                if(temp.getLeft() != null) {
+                if (temp.getLeft() != null) {
                     stack.push(temp.left);
                 }
 
             }
+        }
+    }
+
+    public static void levelTravel(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+        while (!q.isEmpty()) {
+            Node temp = q.poll();
+            System.out.println(temp.getText());
+
+            if (temp.getLeft() != null) q.add((Node) temp.getLeft());
+            if (temp.getRight() != null) q.add((Node) temp.getRight());
+
         }
     }
 
