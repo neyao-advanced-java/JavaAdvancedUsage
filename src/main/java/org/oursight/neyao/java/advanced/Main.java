@@ -6,7 +6,6 @@ package org.oursight.neyao.java.advanced;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println('b'-'a');
-        System.out.println('c'-'a');
+        System.out.println((char)3);
     }
 }
