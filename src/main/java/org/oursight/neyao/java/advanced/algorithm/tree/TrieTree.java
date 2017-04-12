@@ -44,9 +44,10 @@ public class TrieTree {
 //        trie.levelTraversal(trie.root);
 //        System.out.println(trie.wordCount());
 
-        System.out.println(trie.isExist(trie.root, "sher"));
-        System.out.println(trie.isExist(trie.root, "her"));
+//        System.out.println(trie.isExist(trie.root, "sher"));
+//        System.out.println(trie.isExist(trie.root, "her"));
 
+        System.out.println(trie.getWordForPrefix("z"));
     }
 
     private TrieTreeNode<String> root = null;
@@ -186,10 +187,49 @@ public class TrieTree {
     }
 
     public Map<String, Integer> getWordForPrefix(String prefix) {
+        Map<String, Integer> result = new HashMap<>();
+        if(prefix == null || "".equals(prefix)) {
+            return result;
+        }
 
+        getWordForPrefixInternal(root, prefix, result);
+        return  result;
     }
 
-    public Map<String, Integer> getWordForPrefix(String prefix) {
+    private void getWordForPrefixInternal(TrieTreeNode node, String prefix, Map<String, Integer> result) {
+        if(node ==null)
+            return;
+
+        if(node.isLeaf()) {
+            result.put(prefix, node.getDumpliCount());
+
+        }
+
+        char[] chars = prefix.toLowerCase().toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            int index  = chars[i] - 'a';
+
+            if(node.getChildren()[index] == null)
+                return;
+
+            node = node.getChildren()[index];
+            getWordForPrefixInternal(node, );
+        }
+
+
+//        for (int i = 0; i < node.getChildren().length; i++) {
+//            TrieTreeNode childNode = node.getChildren()[i];
+//
+//            if(childNode == null)
+//                continue;
+//
+//
+//
+//            char c = (char) (i + 'a');
+//            String nextPrefix = prefix + c;
+//
+//            getWordForPrefixInternal(childNode, nextPrefix, result);
+//        }
 
     }
 }
