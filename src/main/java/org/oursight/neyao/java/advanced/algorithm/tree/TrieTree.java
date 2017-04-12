@@ -184,4 +184,12 @@ public class TrieTree {
 
         return true;
     }
+
+    public Map<String, Integer> getWordForPrefix(String prefix) {
+
+    }
+
+    public Map<String, Integer> getWordForPrefix(String prefix) {
+
+    }
 }
