@@ -13,11 +13,9 @@ import java.util.Set;
 public class BinarySearchTree<T extends Comparable<T>> {
 
     public static void main(String[] args) throws InterruptedException {
-
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
         Integer[] arrays = SortingAlgorithms._createArray(5);
-
 
         for (Integer a : arrays) {
             System.out.println(a + " add");

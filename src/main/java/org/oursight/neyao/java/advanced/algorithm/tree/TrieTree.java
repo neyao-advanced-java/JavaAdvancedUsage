@@ -1,5 +1,7 @@
 package org.oursight.neyao.java.advanced.algorithm.tree;
 
+import org.apache.commons.lang3.NotImplementedException;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -40,8 +42,10 @@ public class TrieTree {
 
         trie.preTraversal(trie.root);
 //        trie.levelTraversal(trie.root);
-        System.out.println(trie.wordCount());
+//        System.out.println(trie.wordCount());
 
+        System.out.println(trie.isExist(trie.root, "sher"));
+        System.out.println(trie.isExist(trie.root, "her"));
 
     }
 
@@ -140,27 +144,44 @@ public class TrieTree {
      * FIXME 实现得不对
      */
     public void levelTraversal(TrieTreeNode node) {
-        if (node == null) {
-            return;
-        }
-
-        Queue<TrieTreeNode> q = new LinkedList<>();
-        q.add(node);
-
-        while (!q.isEmpty()) {
-            TrieTreeNode temp = q.poll();
-            System.out.println(temp.getText());
-
-            //if (node.isLeaf() != true) {
-            for (int i = 0; i < node.getChildren().length; i++) {
-                TrieTreeNode n = node.getChildren()[i];
-                if (n != null) {
-                    q.add(n);
-                }
-
-            }
-        }
+        throw new NotImplementedException("注释代码里实现得不对");
+//        if (node == null) {
+//            return;
+//        }
+//
+//        Queue<TrieTreeNode> q = new LinkedList<>();
+//        q.add(node);
+//
+//        while (!q.isEmpty()) {
+//            TrieTreeNode temp = q.poll();
+//            System.out.println(temp.getText());
+//
+//            //if (node.isLeaf() != true) {
+//            for (int i = 0; i < node.getChildren().length; i++) {
+//                TrieTreeNode n = node.getChildren()[i];
+//                if (n != null) {
+//                    q.add(n);
+//                }
+//
+//            }
+//        }
 
     }
 
+    public boolean isExist(TrieTreeNode node, String word) {
+        if(word == null || "".equals(word))
+            return false;
+
+        char[] chars = word.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            int index = chars[i] - 'a';
+            if(node.getChildren()[index] == null) {
+                return false;
+            }
+
+            node = node.getChildren()[index];
+        }
+
+        return true;
+    }
 }
