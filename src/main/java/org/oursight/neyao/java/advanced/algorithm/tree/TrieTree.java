@@ -98,27 +98,28 @@ public class TrieTree {
     }
 
     private void preTraversalWordCounts(TrieTreeNode node, String prefix, Map<String, Integer> result) {
-        if (node == null)
-            return;
-
-        System.out.println(node.getText());
-
-//        if (node.isLeaf()) {
+        throw new NotImplementedException("实现得不对，注释掉了");
+//        if (node == null)
 //            return;
+//
+//        System.out.println(node.getText());
+//
+////        if (node.isLeaf()) {
+////            return;
+////        }
+//
+//        for (int i = 0; i < node.getChildren().length; i++) {
+//            TrieTreeNode nodeOfChildren = node.getChildren()[i];
+//            if (nodeOfChildren != null) {
+//                char c = (char) (i + 'a');
+//                String nextPrefix = prefix + c;
+//                if (nodeOfChildren.isLeaf()) {
+//                    result.put(nextPrefix, nodeOfChildren.getDumpliCount());
+//                }
+//                preTraversalWordCounts(nodeOfChildren, nextPrefix, result);
+//            }
+//
 //        }
-
-        for (int i = 0; i < node.getChildren().length; i++) {
-            TrieTreeNode nodeOfChildren = node.getChildren()[i];
-            if (nodeOfChildren != null) {
-                char c = (char) (i + 'a');
-                String nextPrefix = prefix + c;
-                if (nodeOfChildren.isLeaf()) {
-                    result.put(nextPrefix, nodeOfChildren.getDumpliCount());
-                }
-                preTraversalWordCounts(nodeOfChildren, nextPrefix, result);
-            }
-
-        }
     }
 
     public void preTraversal(TrieTreeNode node) {
@@ -200,36 +201,18 @@ public class TrieTree {
         if(node ==null)
             return;
 
-        if(node.isLeaf()) {
-            result.put(prefix, node.getDumpliCount());
+        for (int i = 0; i < node.getChildren().length; i++) {
+            TrieTreeNode nodeOfChildren = node.getChildren()[i];
+            if (nodeOfChildren != null) {
+                char c = (char) (i + 'a');
+                String nextPrefix = prefix + c;
+                if (nodeOfChildren.isLeaf()) {
+                    result.put(nextPrefix, nodeOfChildren.getDumpliCount());
+                }
+                getWordForPrefixInternal(nodeOfChildren, nextPrefix, result);
+            }
 
         }
-
-        char[] chars = prefix.toLowerCase().toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            int index  = chars[i] - 'a';
-
-            if(node.getChildren()[index] == null)
-                return;
-
-            node = node.getChildren()[index];
-            getWordForPrefixInternal(node, );
-        }
-
-
-//        for (int i = 0; i < node.getChildren().length; i++) {
-//            TrieTreeNode childNode = node.getChildren()[i];
-//
-//            if(childNode == null)
-//                continue;
-//
-//
-//
-//            char c = (char) (i + 'a');
-//            String nextPrefix = prefix + c;
-//
-//            getWordForPrefixInternal(childNode, nextPrefix, result);
-//        }
 
     }
 }
