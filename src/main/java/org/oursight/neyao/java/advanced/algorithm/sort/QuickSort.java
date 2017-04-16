@@ -3,8 +3,8 @@ package org.oursight.neyao.java.advanced.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * http://blog.csdn.net/morewindows/article/details/6684558   白话快排, 解释得非常详尽和清楚
- * https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F    快速排序的维基百科，有各种算法
+ * http://blog.csdn.net/morewindows/article/details/6684558   白话快排, 解释得非常详尽和清楚【但是里边的例子似乎运行不了】
+ * https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F    快速排序的维基百科，有各种算法【本类中的例子】
  * <p>
  * Created by DellPC on 2017/4/16.
  */
