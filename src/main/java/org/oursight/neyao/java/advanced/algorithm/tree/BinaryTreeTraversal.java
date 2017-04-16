@@ -94,7 +94,7 @@ public class BinaryTreeTraversal {
     }
 
     /**
-     * @param node 树节点  深度优先  BFS
+     * @param node 树节点  广度优先  BFS
      *             利用栈实现循环先序遍历二叉树
      *             这种实现类似于图的深度优先遍历（DFS）
      *             维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
