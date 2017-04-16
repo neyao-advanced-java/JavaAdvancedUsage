@@ -16,18 +16,20 @@ import java.util.*;
  * 无向图的实现
  * Created by neyao on 2017/4/14.
  */
-public class NonDirectedGraph {
+public class NonDirectedGraphShortestPath {
 
     public static void main(String[] args) throws IOException {
         String text = FileUtils.readFileToString(new File("D:\\Workspace\\Mine\\JavaAdvancedUsage\\src\\main\\java\\org\\oursight\\neyao\\java\\advanced\\algorithm\\graph\\graph-1.txt"), "UTF-8");
 
         System.out.println("text:\n" + text);
 
-        NonDirectedGraph g = new NonDirectedGraph(text);
+        NonDirectedGraphShortestPath g = new NonDirectedGraphShortestPath(text);
         System.out.println(g);
 
         g.unweightedShortestPath();
-        g.showDistance();
+
+//        g.showDistance();
+        g.myShowDistance();
 
     }
 
@@ -35,7 +37,7 @@ public class NonDirectedGraph {
 
     private Vertex startVertex;
 
-    public NonDirectedGraph(String matrixText) {
+    public NonDirectedGraphShortestPath(String matrixText) {
         graph = new LinkedHashMap<>();
         buildGraph(matrixText);
     }
@@ -75,7 +77,28 @@ public class NonDirectedGraph {
     }
 
     public void unweightedShortestPath() {
-        unweightedShortestPath(startVertex);
+//        unweightedShortestPath(startVertex);
+        myUnweightedShortestPath(startVertex);
+    }
+
+
+    private void myUnweightedShortestPath(Vertex s) {
+        Queue<Vertex> queue = new LinkedList<>();
+
+        s.dist = 0;
+        queue.offer(s);
+        while (!queue.isEmpty()) {
+            Vertex v = queue.poll();
+            for (Edge e : v.adjEdges) {
+                if (e.endVertex.visited == false) {
+                    e.endVertex.visited = true;
+                    e.endVertex.dist = v.dist + 1;
+                    e.endVertex.preNode = v;
+                    queue.offer(e.endVertex);
+
+                }
+            }
+        }
     }
 
     /*
@@ -100,6 +123,20 @@ public class NonDirectedGraph {
         }//end while
     }
 
+    public void myShowDistance() {
+//        Collection<Vertex> vertexs =
+        for (Vertex v : graph.values()) {
+            System.out.print(v.label + "<--");
+            Vertex preNode = v.preNode;
+            while (preNode != null) {
+                System.out.print(preNode.label + "<--");
+                preNode = preNode.preNode;
+            }
+            System.out.println(", dist:" + v.dist);
+        }
+    }
+
+
     //打印图中所有顶点到源点的距离及路径
     public void showDistance() {
         Collection<Vertex> vertexs = graph.values();
@@ -123,7 +160,10 @@ public class NonDirectedGraph {
         private String label;
         private List<Edge> adjEdges;
         private Vertex preNode;
-        private int dist;
+        private int dist; //顶点距离(该顶点到起始顶点的距离)
+
+        // 自己加的属性
+        boolean visited;
 
         public Vertex(String label) {
             this.label = label;

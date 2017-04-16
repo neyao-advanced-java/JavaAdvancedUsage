@@ -8,6 +8,9 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * BFS＝队列，入队列，出队列；    广度优先
+ * DFS=栈，压栈，出栈           深度优先
+ *
  * Created by DellPC on 2017/4/9.
  */
 public class BinaryTreeTraversal {
@@ -91,7 +94,7 @@ public class BinaryTreeTraversal {
     }
 
     /**
-     * @param node 树节点
+     * @param node 树节点  深度优先  BFS
      *             利用栈实现循环先序遍历二叉树
      *             这种实现类似于图的深度优先遍历（DFS）
      *             维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
@@ -117,6 +120,10 @@ public class BinaryTreeTraversal {
         }
     }
 
+    /**
+     * DFS 深度优先
+     * @param node
+     */
     public static void levelTravel(Node node) {
         if (node == null) {
             return;
