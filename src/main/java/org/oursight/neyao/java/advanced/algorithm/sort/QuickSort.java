@@ -41,8 +41,8 @@ public class QuickSort {
         if (start >= end)
             return;
 
-//        int x = arr[end];
-        int x = arr[start];
+        int x = arr[end];
+//        int x = arr[start];
 
         int left = start, right = end - 1;
         while (left < right) {
