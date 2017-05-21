@@ -266,6 +266,8 @@ public class OutlierNodeDetect2 {
         double[] p = {7, 17};
         double[] q = {8, 21};
 
+        double[] u = {8, 310};
+
         dpoints.add(new Node("a", a));
         dpoints.add(new Node("b", b));
         dpoints.add(new Node("c", c));
@@ -286,6 +288,8 @@ public class OutlierNodeDetect2 {
         dpoints.add(new Node("o", o));
         dpoints.add(new Node("p", p));
         dpoints.add(new Node("q", q));
+
+        dpoints.add(new Node("u", u));
 
         OutlierNodeDetect2 lof = new OutlierNodeDetect2();
 
