@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * 这个版本注释更清晰一些
  * 离群点分析
  *
  * @author zouzhongfan
@@ -154,12 +155,10 @@ public class OutlierNodeDetect2 {
         List<Node> kdAndKnList = new ArrayList<Node>();
         for (int i = 0; i < allNodes.size(); i++) {
             List<Node> tempNodeList = new ArrayList<Node>();
-            Node nodeA = new Node(allNodes.get(i).getNodeName(), allNodes
-                    .get(i).getDimensioin());
+            Node nodeA = new Node(allNodes.get(i).getNodeName(), allNodes.get(i).getDimensioin());
             //1,找到给定点NodeA与其他点NodeB的欧几里得距离，并记录在NodeB点的distance变量中。
             for (int j = 0; j < allNodes.size(); j++) {
-                Node nodeB = new Node(allNodes.get(j).getNodeName(), allNodes
-                        .get(j).getDimensioin());
+                Node nodeB = new Node(allNodes.get(j).getNodeName(), allNodes.get(j).getDimensioin());
                 //计算NodeA与NodeB的欧几里得距离(distance)
                 double tempDis = getDis(nodeA, nodeB);
                 nodeB.setDistance(tempDis);
