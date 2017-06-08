@@ -9,6 +9,18 @@ import org.oursight.neyao.java.advanced.util.DateUtil;
 public class JodaTimeUsage {
 
     public static void main(String[] args) {
+        getYesterday();
+    }
+
+    public static void getYesterday() {
+        DateTime dateTime = new DateTime();
+        DateTime yesterday = dateTime.minusDays(1);
+        System.out.println(yesterday.toDate());
+        System.out.println(DateUtil.timeMillisToString(yesterday.getMillis()));
+
+    }
+
+    public static void basic() {
         long timeMillis1 = DateTime.parse("2017-05-01").toDate().getTime();
         long timeMillis2 = DateTime.parse("20170501").toDate().getTime();
 
@@ -18,4 +30,5 @@ public class JodaTimeUsage {
         System.out.println(DateUtil.timeMillisToString(timeMillis1));
         System.out.println(DateUtil.timeMillisToString(timeMillis2));
     }
+
 }

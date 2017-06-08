@@ -12,16 +12,17 @@ public class RegexLearning {
     public static void main(String[] args) {
 //        basic();
 //        complicate();
-//        replace();
 
+        replace();
 
-        String str1 = "<href=\"http://www.taobao.com/http://www.taobao.com/http://www.taobao.com/d1/a.jpg>";
-        String regex = "href=\"(http://www.taobao.com/){2,}";
-        System.out.println("str1 match:" + Pattern.matches(regex, str1));
-        System.out.println(str1);
-        System.out.println(StringUtils.replacePattern(str1, regex, "src=\"http://www.baidu.com/"));
+        System.out.println("==========================");
         System.out.println();
         System.out.println();
+        System.out.println();
+
+        findAndReplaceBaseInHtml();
+
+
     }
 
     public static void basic() {
@@ -68,7 +69,8 @@ public class RegexLearning {
         System.out.println();
         System.out.println();
 
-        str1 = "<src=\"./img/aaa\">";
+//        str1 = "<src=\"./img/aaa\">";
+        str1 = "<src=\"http://11.com\">";
         regex = "src=[\"^(\\w+)(/{2})]";
         System.out.println("str1 match:" + Pattern.matches(regex, str1));
         System.out.println(str1);
@@ -139,5 +141,55 @@ public class RegexLearning {
 
         regex = "[\\s\\S]*src=\"/{2}\\w[\\s\\S]*";
         System.out.println("str3 match:" + Pattern.matches(regex, str3));
+    }
+
+    public static void findAndReplaceBaseInHtml() {
+        String regex;
+        String html11 = "<html><head> <title>aaa</title> </head><body> <a> </a> </body></html>";
+        String html12 = "<html><head> <title>aaa</TITLE> </head><body> <a> </a> </body></html>";
+        String html2 = "<html><head> <base href=\"xxx\" /> <title>aaa</title> </head><body> <a> </a> </body></html>";
+        String html3 = "<html><head> <BASE href=\"xxx\" /> <title>aaa</title> </head><body> <a> </a> </body></html>";
+
+//    String regex1 = "(?i)<head>"
+        String regex2 = "(?i)<base";
+        System.out.println("regex2 match:" + Pattern.matches(regex2, html2));
+        System.out.println("regex2 match html2: " + Pattern.compile(regex2, Pattern.DOTALL).matcher(html2).find());
+        System.out.println("regex2 match html3: " + Pattern.compile(regex2, Pattern.DOTALL).matcher(html3).find());
+        System.out.println();
+
+        String regex3 = "(?i)<base\\s{1,}(?i)href";
+        regex = regex3;
+        System.out.println("regex3 match:" + Pattern.matches(regex, html2));
+        System.out.println("regex3 match html2: " + Pattern.compile(regex, Pattern.DOTALL).matcher(html2).find());
+        System.out.println("regex3 match html3: " + Pattern.compile(regex, Pattern.DOTALL).matcher(html3).find());
+        System.out.println();
+
+
+
+        String regex11 = "(?i)<head>";
+        regex = regex11;
+        System.out.println(html2);
+        System.out.println("regex3: " + regex3);
+        System.out.println(StringUtils.replacePattern(html2, regex, "<head><base href=\"http://11.com\" />"));
+        System.out.println();
+
+//        String regex4 = "(?i)<base";
+//        System.out.println(html2);
+//        System.out.println(regex4);
+//        System.out.println(StringUtils.replacePattern(html2, regex3, "<base href=\"http://11.com\">"));
+//        System.out.println();
+
+        String str1 = "<basE  href=\"hTtp://www.baidu.com///img/aaa\" />";
+        regex = "(?i)<base\\s{1,}href=\"http([\\w\\W]*)\"";
+        System.out.println(str1);
+        System.out.println("found: " + Pattern.compile(regex, Pattern.DOTALL).matcher(str1).find());
+        System.out.println(StringUtils.replacePattern(str1, regex, "<base href=\"1111111\""));
+
+//        str1 = "<src=\"./img/aaa\">";
+//        regex = "src=[\"^(\\w+)(/{2})]";
+//        System.out.println("str1 match:" + Pattern.matches(regex, str1));
+//        System.out.println(str1);
+//        System.out.println(StringUtils.replacePattern(str1, regex, "src=\"http://www.baidu.com/"));
+//        System.out.println();
     }
 }
