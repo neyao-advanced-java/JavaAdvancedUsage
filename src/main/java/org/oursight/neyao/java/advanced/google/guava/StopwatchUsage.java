@@ -9,12 +9,24 @@ import java.util.concurrent.TimeUnit;
  */
 public class StopwatchUsage {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Stopwatch stopwatch = Stopwatch.createStarted();
 
-        for (int i = 0; i < 1000; i++) {
+        System.out.println(stopwatch.elapsed(TimeUnit.MILLISECONDS));
+        System.out.println();
+//        System.out.println(stopwatch.(TimeUnit.MILLISECONDS));
+        Thread.sleep(1000L);
 
-        }
+        System.out.println(stopwatch.elapsed(TimeUnit.MILLISECONDS));
+        System.out.println();
+        Thread.sleep(2000L);
+
+        System.out.println(stopwatch.elapsed(TimeUnit.MILLISECONDS));
+        System.out.println();
+
+//        for (int i = 0; i < 1000; i++) {
+//
+//        }
 
         System.out.println(stopwatch);
         System.out.println(stopwatch.isRunning());
