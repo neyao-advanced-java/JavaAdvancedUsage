@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
@@ -16,6 +17,10 @@ import java.nio.charset.StandardCharsets;
 public class TestHttpURLConnection {
 
     protected static final String IPHONE6_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1";
+
+    public static void main(String[] args) throws Exception {
+        basic();
+    }
 
     /**
      * 本方法展示了从http跳转到http说的处理方式。
@@ -94,7 +99,9 @@ public class TestHttpURLConnection {
 //        URL url = new URL("http://uc.ww88.net.cn");
 //        URL url = new URL("http://uc.10000et.com/?MzQ=");
 //        URL url = new URL("http://www.baidu.com");
-        URL url = new URL("http://chouti.com");
+//        URL url = new URL("http://chouti.com");
+        System.out.println(URLEncoder.encode("http://www.maotaizuichen.com/index.php?m=Order&id=ZXHZ3&uid=1&tpl=detail&ac=L6Xg1UC", "UTF-8"));
+        URL url = new URL("http://www.maotaizuichen.com/index.php?m=Order&id=ZXHZ3&uid=1&tpl=detail&ac=L6Xg1UC");
         System.out.println("url.toString(): " + url.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setInstanceFollowRedirects(true);

@@ -4,6 +4,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.oursight.neyao.java.advanced.algorithm.lof.Node;
 
+import java.util.List;
+
 /**
  * Created by yaonengjun on 170506.
  */
@@ -25,5 +27,11 @@ public class MultimapUsage {
 
         System.out.println(map.get("1"));
         System.out.println();
+        for (String key : map.keySet()) {
+            List list = (List) map.get(key);
+            System.out.println(key + ": " + list);
+        }
+
+
     }
 }
