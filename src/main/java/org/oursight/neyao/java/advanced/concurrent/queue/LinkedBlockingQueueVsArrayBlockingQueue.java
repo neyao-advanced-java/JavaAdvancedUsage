@@ -14,11 +14,12 @@ public class LinkedBlockingQueueVsArrayBlockingQueue {
     static BlockingQueue arrayBlockingQueue;
     static BlockingQueue linkedBlockingQueue;
 
-    static int SIZE = 20000000;
+//    static int SIZE = 20000000;
+    static int SIZE = 200000;
 
     public static void main(String[] args) throws InterruptedException {
         arrayBlockingQueue = new ArrayBlockingQueue(SIZE);
-        linkedBlockingQueue = new LinkedBlockingQueue<>();
+        linkedBlockingQueue = new LinkedBlockingQueue<>(SIZE);
 
         System.out.println(Integer.MAX_VALUE);
 
