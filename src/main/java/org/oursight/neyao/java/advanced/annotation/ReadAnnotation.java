@@ -3,6 +3,7 @@ package org.oursight.neyao.java.advanced.annotation;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -78,6 +79,13 @@ public class ReadAnnotation {
         System.out.println("value: " + field.get(object));
         Annotation p = field.getAnnotation(annotationClasss);
         System.out.println("Annotation: " + p);
+
+
+//        Type type = field.getGenericType();
+//        System.out.println("field.getGenericType: " + type);
+//
+//        System.out.println("field.getGenericType int: " + type.equals(int.class));
+//        System.out.println("field.getGenericType string: " + type.equals(String.class));
 
       }
     }
